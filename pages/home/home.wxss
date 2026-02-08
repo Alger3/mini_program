@@ -1,8 +1,33 @@
-.home-container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8f8f8; }
-.logo { font-size: 48rpx; font-weight: bold; margin-bottom: 80rpx; 
-text-align: center;
-width: 100%;}
-.button-group { width: 80%; }
+.home-container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; background: #f8f8f8; }
+.scroll-area {
+  height: 100vh; /* 滚动区域占据整个屏幕高度 */
+}
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* 必须是 min-height，让内容多时能撑开高度 */
+  min-height: 100vh; 
+  
+  /* 确保内容从顶部开始排列，而不是从中间挤压 */
+  justify-content: flex-start; 
+
+  padding: 60rpx 0;
+  box-sizing: border-box;
+}
+.logo {
+  font-size: 48rpx;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  
+  /* 关键：上方自动推力 */
+  margin-top: auto; 
+  margin-bottom: 80rpx;
+  flex-shrink: 0;
+}
+.button-group { width: 80%; margin-bottom: auto;}
 .nav-btn { width: 100%; margin-bottom: 30rpx; padding: 30rpx; border-radius: 20rpx; font-size: 34rpx; }
 .menu-btn { background: #07c160; color: white; }
 .record-btn { background: #10aeff; color: white; }
