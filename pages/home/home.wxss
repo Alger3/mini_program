@@ -1,0 +1,11 @@
+.home-container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8f8f8; }
+.logo { font-size: 48rpx; font-weight: bold; margin-bottom: 80rpx; 
+text-align: center;
+width: 100%;}
+.button-group { width: 80%; }
+.nav-btn { width: 100%; margin-bottom: 30rpx; padding: 30rpx; border-radius: 20rpx; font-size: 34rpx; }
+.menu-btn { background: #07c160; color: white; }
+.record-btn { background: #10aeff; color: white; }
+.sports-btn {background: #c7c73b; color: white;}
+.diet-btn {background: #f503e1; color: white;}
+.graphs-btn {background: #ec0914; color: white;}
