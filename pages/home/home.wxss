@@ -1,54 +1,53 @@
-.home-container { 
-  height: 100vh; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  min-height: 100vh;
-}
-.top-banner-view {
-  width: 100%;
-  height: 56.25vw; /* 严格的 16:9 比例高度 */
-  
-  /* 背景图设置 */
-  background-size: cover;       /* 等比缩放铺满容器 */
-  background-position: center;  /* 居中显示 */
-  background-repeat: no-repeat;
-  
-  flex-shrink: 0;               /* 防止被 Flex 布局挤压 */
-  margin-bottom: 20rpx;         /* 和下方按钮保持一点间距 */
-}
-.page-bg{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
 .scroll-area {
-  height: 100vh; /* 滚动区域占据整个屏幕高度 */
+  height: 100vh;
+  width: 100%;
 }
 
-.home-content {
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  /* 必须是 min-height，让内容多时能撑开高度 */
-  min-height: 100vh; 
-  
-  /* 确保内容从顶部开始排列，而不是从中间挤压 */
-  justify-content: flex-start; 
-
-  padding: 60rpx 0;
-  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  /* 关键点 1：增加顶部留白。40rpx 是基础，env 是适配刘海 */
+  padding-top: calc(env(safe-area-inset-top) + 60rpx); 
+  background-size: cover;
+  background-position: center;
 }
 
-.button-group { width: 80%; margin-bottom: auto;}
-.nav-btn { width: 100%; margin-bottom: 30rpx; padding: 30rpx; border-radius: 20rpx; font-size: 34rpx; }
+.top-banner-view {
+  width: 100%;
+  /* 关键点 2：如果 56.25vw 还是挡字，可以试着调高到 65vw 或 70vw */
+  height: 60vw; 
+  
+  /* 关键点 3：改用 contain 确保图片比例完整，文字不被拉伸或裁切 */
+  background-size: contain; 
+  background-position: center top; 
+  background-repeat: no-repeat;
+  
+  flex-shrink: 0;
+  margin-bottom: 20rpx;
+}
+
+.button-group {
+  width: 85%; /* 稍微加宽一点，视觉更协调 */
+  padding-bottom: 60rpx; /* 底部留出呼吸空间 */
+}
+
+.nav-btn {
+  width: 100% !important; /* 强制覆盖微信默认按钮宽度 */
+  margin-bottom: 30rpx;
+  padding: 25rpx 0;
+  border-radius: 20rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  /* 加一个微弱的阴影，让按钮在背景上更有立体感 */
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.1); 
+}
+
+/* 颜色保持你的设定 */
 .menu-btn { background: #07c160; color: white; }
 .bill-btn { background: #10aeff; color: white; }
-.sports-btn {background: #c7c73b; color: white;}
-.diet-btn {background: #f503e1; color: white;}
-.graphs-btn {background: #ec0914; color: white;}
+.sports-btn { background: #c7c73b; color: white; }
+.diet-btn { background: #f503e1; color: white; }
+.graphs-btn { background: #ec0914; color: white; }
