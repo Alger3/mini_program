@@ -6,6 +6,17 @@ Page({
     tempAmount: ''
   },
 
+  // pages/bill/bill.js
+  onLoad() {
+    // 从本地缓存中获取名为 'bill_list' 的数据
+    const savedBills = wx.getStorageSync('bill_list');
+    if (savedBills) {
+      this.setData({
+        billList: savedBills
+      });
+    }
+  },
+
   togglePopup() {
     this.setData({
       showPopup: !this.data.showPopup,
@@ -37,11 +48,13 @@ Page({
       date: new Date().toLocaleDateString()
     };
 
+    const newList = [newBill, ...billList];
     this.setData({
-      billList: [newBill, ...billList],
+      billList: newList,
       showPopup: false
     });
 
+    wx.setStorageSync('bill_list', newList)
     wx.showToast({ title: '保存成功', icon: 'success' });
   },
 
@@ -64,6 +77,7 @@ deleteBill(e) {
           billList: list
         });
 
+        wx.setStorageSync('bill_list', list)
         wx.showToast({
           title: '已删除',
           icon: 'success'

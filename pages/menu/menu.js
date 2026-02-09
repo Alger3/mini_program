@@ -11,10 +11,6 @@ Page({
     totalCount: 0
   },
 
-  goBack(){
-    wx.navigateBack();
-  },
-
   executeChange(id, type) {
     let total = 0;
     const newMenu = this.data.menuItems.map(item => {
