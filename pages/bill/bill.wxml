@@ -1,12 +1,7 @@
-<view class="bill-container">
+<view class="bill-container" style="background-image: url('https://youke.xn--y7xa690gmna.cn/s1/2026/02/09/6989d4aa3575f.webp');">
   <scroll-view scroll-y="true" class="record-list">
     <view class="header">💰 消费账单</view>
 
-    <view class="empty-state" wx:if="{{billList.length === 0}}">
-      <text class="empty-icon">📒</text>
-      <text>暂无记录，点击下方新增</text>
-    </view>
-    
     <view class="bill-card" 
           wx:for="{{billList}}" 
           wx:key="index"

@@ -1,7 +1,35 @@
-.home-container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; background: #f8f8f8; }
+.home-container { 
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  min-height: 100vh;
+}
+.top-banner-view {
+  width: 100%;
+  height: 56.25vw; /* 严格的 16:9 比例高度 */
+  
+  /* 背景图设置 */
+  background-size: cover;       /* 等比缩放铺满容器 */
+  background-position: center;  /* 居中显示 */
+  background-repeat: no-repeat;
+  
+  flex-shrink: 0;               /* 防止被 Flex 布局挤压 */
+  margin-bottom: 20rpx;         /* 和下方按钮保持一点间距 */
+}
+.page-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .scroll-area {
   height: 100vh; /* 滚动区域占据整个屏幕高度 */
 }
+
 .home-content {
   display: flex;
   flex-direction: column;
@@ -16,17 +44,7 @@
   padding: 60rpx 0;
   box-sizing: border-box;
 }
-.logo {
-  font-size: 48rpx;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  
-  /* 关键：上方自动推力 */
-  margin-top: auto; 
-  margin-bottom: 80rpx;
-  flex-shrink: 0;
-}
+
 .button-group { width: 80%; margin-bottom: auto;}
 .nav-btn { width: 100%; margin-bottom: 30rpx; padding: 30rpx; border-radius: 20rpx; font-size: 34rpx; }
 .menu-btn { background: #07c160; color: white; }
