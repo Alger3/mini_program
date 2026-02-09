@@ -1,0 +1,44 @@
+<view class="bill-container">
+  <scroll-view scroll-y="true" class="record-list">
+    <view class="header">💰 消费账单</view>
+
+    <view class="empty-state" wx:if="{{billList.length === 0}}">
+      <text class="empty-icon">📒</text>
+      <text>暂无记录，点击下方新增</text>
+    </view>
+    
+    <view class="bill-card" wx:for="{{billList}}" wx:key="index">
+      <view class="card-left">
+        <text class="bill-name">{{item.reason}}</text>
+        <text class="bill-time">{{item.date}}</text>
+      </view>
+      <view class="card-right">
+        <text class="bill-amount"> ￥{{item.amount}}</text>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <view class="footer-bar">
+    <button class="add-btn" bindtap="togglePopup">＋ 新增消费</button>
+  </view>
+
+  <view class="mask" wx:if="{{showPopup}}" bindtap="togglePopup"></view>
+  
+  <view class="popup {{showPopup ? 'popup-show' : ''}}">
+    <view class="popup-header">新增消费记录</view>
+    <view class="input-group">
+      <text class="label">消费项目</text>
+      <input class="my-input" placeholder="如：买菜、奶茶" bindinput="inputReason" value="{{tempReason}}" />
+    </view>
+    <view class="input-group">
+      <text class="label">消费金额</text>
+      <input class="my-input" type="digit" placeholder="0.00" bindinput="inputAmount" value="{{tempAmount}}" />
+    </view>
+    <view class="popup-buttons">
+      <button class="cancel-btn" bindtap="togglePopup">取消</button>
+      <button class="confirm-btn" bindtap="saveBill">保存记录</button>
+    </view>
+  </view>
+</view>

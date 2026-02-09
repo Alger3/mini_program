@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/bill/bill"
   ],
   "window": {
     "navigationBarTitleText": "家庭管家"

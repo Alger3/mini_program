@@ -1,39 +1,33 @@
 <view class="container">
-  <view class="back-bar" bindtap="goBack">
-    <text class="back-icon">⬅</text> 返回首页
-  </view>
+  <view class="back-bar" bindtap="goBack"><text class="back-icon">⬅</text> 返回首页</view>
   <view class="header">🏠 今日家常菜</view>
   
   <view class="menu-list">
     <block wx:for="{{menuItems}}" wx:key="id">
       <view class="menu-item">
         <text class="dish-name">{{item.name}}</text>
-        
         <view class="stepper">
-          <view 
-            class="minus {{item.count > 0 ? '' : 'disabled'}}" 
-            bindtouchstart="startTimer" 
-            bindtouchend="stopTimer" 
-            bindtouchcancel="stopTimer"
-            data-id="{{item.id}}" 
-            data-type="minus">-</view>
-
+          <view class="minus {{item.count > 0 ? '' : 'disabled'}}" bindtouchstart="startTimer" bindtouchend="stopTimer" data-id="{{item.id}}" data-type="minus">-</view>
           <text class="count" wx:if="{{item.count > 0}}">{{item.count}}</text>
-
-          <view 
-            class="plus" 
-            bindtouchstart="startTimer" 
-            bindtouchend="stopTimer" 
-            bindtouchcancel="stopTimer"
-            data-id="{{item.id}}" 
-            data-type="plus">+</view>
+          <view class="plus" bindtouchstart="startTimer" bindtouchend="stopTimer" data-id="{{item.id}}" data-type="plus">+</view>
         </view>
       </view>
     </block>
   </view>
 
+  <view class="selected-panel" wx:if="{{totalCount > 0}}">
+    <view class="panel-title">已选清单：</view>
+    <view class="selected-item-tags">
+      <block wx:for="{{menuItems}}" wx:key="id">
+        <view class="tag" wx:if="{{item.count > 0}}">
+          {{item.name}} x {{item.count}}
+        </view>
+      </block>
+    </view>
+  </view>
+
   <view class="footer">
-    <text>总共：{{totalCount}} 份菜</text>
+    <text>共 {{totalCount}} 份</text>
     <button class="submit-btn" bindtap="submitOrder">确定点餐</button>
   </view>
 </view>
