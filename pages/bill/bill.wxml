@@ -7,7 +7,11 @@
       <text>暂无记录，点击下方新增</text>
     </view>
     
-    <view class="bill-card" wx:for="{{billList}}" wx:key="index">
+    <view class="bill-card" 
+          wx:for="{{billList}}" 
+          wx:key="index"
+          bind:longpress="deleteBill"
+          data-index="{{index}}">
       <view class="card-left">
         <text class="bill-name">{{item.reason}}</text>
         <text class="bill-time">{{item.date}}</text>
@@ -30,11 +34,21 @@
     <view class="popup-header">新增消费记录</view>
     <view class="input-group">
       <text class="label">消费项目</text>
-      <input class="my-input" placeholder="如：买菜、奶茶" bindinput="inputReason" value="{{tempReason}}" />
+      <input 
+      class="my-input" 
+      placeholder="如：买菜、奶茶" 
+      bindinput="inputReason" 
+      value="{{tempReason}}" 
+      />
     </view>
     <view class="input-group">
       <text class="label">消费金额</text>
-      <input class="my-input" type="digit" placeholder="0.00" bindinput="inputAmount" value="{{tempAmount}}" />
+      <input 
+      class="my-input" 
+      type="digit" 
+      placeholder="0.00" 
+      bindinput="inputAmount" 
+      value="{{tempAmount}}" />
     </view>
     <view class="popup-buttons">
       <button class="cancel-btn" bindtap="togglePopup">取消</button>
