@@ -10,6 +10,7 @@
       <button class="nav-btn sports-btn" bindtap="goToSports">运动记录</button>
       <button class="nav-btn diet-btn" bindtap="goToDiet">饮食记录</button>
       <button class="nav-btn graphs-btn" bindtap="goToGraphs">查看报表</button>
+      <button class="nav-btn instruction-btn" bindtap="goToInstruction">说明手册</button>
     </view>
   </view>
 </scroll-view>

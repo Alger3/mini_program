@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/menu/menu",
-    "pages/bill/bill"
+    "pages/bill/bill",
+    "pages/instruction/instruction"
   ],
   "window": {
     "navigationBarTitleText": "生活管家"

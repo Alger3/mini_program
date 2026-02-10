@@ -1,8 +1,22 @@
 .bill-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 核心：固定背景层 */
+.fixed-bg {
+  position: fixed;   /* 绝对固定在屏幕 */
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background-color: #f6f7f8; /* 浅灰背景衬托白色卡片 */
-  display: flex;
-  flex-direction: column;
+  z-index: -1;       /* 确保它在所有内容的最底层 */
+  
+  /* 刚才那些导致放大的属性从 .bill-container 挪到这里 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 如果是渐变色，也可以写在这里 */
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 

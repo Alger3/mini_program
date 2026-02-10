@@ -13,5 +13,8 @@ Page({
   },
   goToGraphs() {
     wx.showToast({ title: '记录功能开发中...', icon: 'none' });
+  },
+  goToInstruction() {
+    wx.navigateTo({ url: '/pages/instruction/instruction'});
   }
 })

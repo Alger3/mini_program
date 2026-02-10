@@ -1,0 +1,83 @@
+/* 基础容器 */
+.instruction-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* 核心：固定背景层 */
+.fixed-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+}
+
+.scroll-area {
+  height: 100vh;
+  /* 避开顶部状态栏和胶囊按钮 */
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Banner 16:9 比例 */
+.top-banner-view {
+  width: 100%;
+  height: 56.25vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  margin-bottom: 20rpx;
+}
+
+.header {
+  text-align: center;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #333;
+  margin: 40rpx 0;
+}
+
+/* 说明卡片列表 */
+.instruction-list {
+  padding: 0 30rpx;
+}
+
+/* 半透明卡片设计（磨砂玻璃感） */
+.info-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  padding-left: 15rpx;
+  border-left: 8rpx solid #ccc;
+}
+
+/* 标题左侧色块对应首页按钮颜色 */
+.menu { border-left-color: #07c160; color: #07c160; }
+.bill { border-left-color: #10aeff; color: #10aeff; }
+.sports { border-left-color: #c7c73b; color: #c7c73b; }
+.diet { border-left-color: #f503e1; color: #f503e1; }
+.graphs { border-left-color: #ec0914; color: #ec0914; }
+
+.card-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.bottom-spacer {
+  height: 100rpx;
+}

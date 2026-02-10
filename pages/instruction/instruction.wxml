@@ -1,0 +1,39 @@
+<view class="instruction-container">
+  <view class="fixed-bg" style="background-image: url('https://youke.xn--y7xa690gmna.cn/s1/2026/02/09/6989d4aa1ebd2.webp');"></view>
+
+  <scroll-view scroll-y="true" class="scroll-area">
+
+    <view class="header">📖 功能说明手册</view>
+
+    <view class="instruction-list">
+      
+      <view class="info-card">
+        <view class="card-title menu">家庭菜单</view>
+        <view class="card-content">记录全家人的每日菜谱，支持按日期查询，让你不再为“今天吃什么”发愁。</view>
+      </view>
+
+      <view class="info-card">
+        <view class="card-title bill">消费记录</view>
+        <view class="card-content">精细化管理每一笔支出，半透明卡片设计，让你的财务账单清晰又美观。</view>
+      </view>
+
+      <view class="info-card">
+        <view class="card-title sports">运动记录</view>
+        <view class="card-content">打卡每日运动量，记录跑步、健身等数据，见证你身体的点滴变化。</view>
+      </view>
+
+      <view class="info-card">
+        <view class="card-title diet">饮食记录</view>
+        <view class="card-content">记录每日摄入的热量与营养，科学管理饮食健康，保持完美身材。</view>
+      </view>
+
+      <view class="info-card">
+        <view class="card-title graphs">查看报表</view>
+        <view class="card-content">将消费、运动等数据可视化，通过直观的图表分析你的生活趋势。</view>
+      </view>
+
+    </view>
+    
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+</view>

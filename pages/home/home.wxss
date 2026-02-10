@@ -51,3 +51,4 @@
 .sports-btn { background: #c7c73b; color: white; }
 .diet-btn { background: #f503e1; color: white; }
 .graphs-btn { background: #ec0914; color: white; }
+.instruction-btn {background: #080808; color: white;}
