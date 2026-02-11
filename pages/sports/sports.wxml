@@ -23,13 +23,17 @@
 
     <view class="section-title">历史记录</view>
     <view class="history-list">
-      <view class="history-item" wx:for="{{history}}" wx:key="index">
+      <view class="history-item" 
+            wx:for="{{history}}" 
+            wx:key="index" 
+            bindlongpress="onDeleteRecord" 
+            data-index="{{index}}">
         <view class="item-left">
           <text class="item-type">{{item.type}}</text>
           <text class="item-date">{{item.timeRange}} ({{item.date}})</text>
         </view>
         <view class="item-right">
-          <text class="item-duration"> {{item.durationText}}</text>
+          <text class="item-duration">+ {{item.durationText}}</text>
         </view>
       </view>
     </view>

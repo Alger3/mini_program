@@ -80,6 +80,17 @@
   border: 1rpx solid #e0e0e0;
 }
 
+.history-item:active {
+  /* 点击时背景变暗一点，透明度从 0.6 变为 0.4 */
+  background: rgba(220, 220, 220, 0.4); 
+  
+  /* 同时让卡片轻微缩小，增加物理点击感 */
+  transform: scale(0.98);
+  
+  /* 过渡效果，让变色过程更平滑 */
+  transition: all 0.1s ease;
+}
+
 /* 之前已有的 modal 样式保持不变... */
 
 /* 隐藏滚动条 */

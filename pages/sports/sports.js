@@ -18,16 +18,24 @@ Page({
       { name: '足球', icon: '⚽' },
       { name: '其他', icon: '✍' }
     ],
-    history: [
-    ]
+    history: []
   },
 
   onLoad() {
+    // A. 设置导航栏高度逻辑
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     this.setData({
       navTop: menuButtonInfo.top,
       navHeight: menuButtonInfo.height
     });
+
+    // B. 【核心】从本地缓存读取记录
+    const savedHistory = wx.getStorageSync('sports_history');
+    if (savedHistory) {
+      this.setData({
+        history: savedHistory
+      });
+    }
   },
 
   goBack() {
@@ -100,10 +108,13 @@ Page({
       durationText: durationText
     };
 
+    const newHistory = [newRecord, ...history];
     this.setData({
-      history: [newRecord, ...history],
+      history: newHistory,
       showModal: false
     });
+
+    wx.setStorageSync('sports_history', newHistory);
 
     wx.showToast({ title: '记录成功', icon: 'success' });
   },
@@ -113,5 +124,39 @@ Page({
 
   hideModal() {
     this.setData({ showModal: false });
-  }
+  },
+
+  // 长按删除记录
+  onDeleteRecord(e) {
+    const index = e.currentTarget.dataset.index;
+    const record = this.data.history[index];
+    
+    wx.showModal({
+      title: '提示',
+      content: `确定要删除 ${record.type} 这条记录吗？`,
+      confirmColor: '#c7c73b', // 保持和你按钮颜色一致
+      success: (res) => {
+        if (res.confirm) {
+          // 1. 获取当前数组
+          let newHistory = this.data.history;
+          
+          // 2. 移除点击的那一项
+          newHistory.splice(index, 1);
+          
+          // 3. 更新页面显示
+          this.setData({
+            history: newHistory
+          });
+          
+          // 4. 同步更新本地缓存
+          wx.setStorageSync('sports_history', newHistory);
+          
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success'
+          });
+        }
+      }
+    });
+  },
 })
