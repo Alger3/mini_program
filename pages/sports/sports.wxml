@@ -33,7 +33,7 @@
           <text class="item-date">{{item.timeRange}} ({{item.date}})</text>
         </view>
         <view class="item-right">
-          <text class="item-duration">+ {{item.durationText}}</text>
+          <text class="item-duration"> {{item.durationText}}</text>
         </view>
       </view>
     </view>

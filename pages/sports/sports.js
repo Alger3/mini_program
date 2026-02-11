@@ -5,7 +5,7 @@ Page({
     showModal: false,
     currentType: '',
     customTypeName: '',
-    startTime: '18:00',
+    startTime: '18:30',
     endTime: '19:00',
     sportTypes: [
       { name: '跑步', icon: '🏃' },
@@ -24,9 +24,16 @@ Page({
   onLoad() {
     // A. 设置导航栏高度逻辑
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    const now = new Date()
+    const hours = String(now.getHours()).padStart(2, '0');
+    const mins = String(now.getMinutes()).padStart(2, '0');
+    const minsAdd1 = String(now.getMinutes() + 1).padStart(2, '0');
+
     this.setData({
       navTop: menuButtonInfo.top,
-      navHeight: menuButtonInfo.height
+      navHeight: menuButtonInfo.height,
+      startTime: `${hours}:${mins}`,
+      endTime: `${hours}:${minsAdd1}`
     });
 
     // B. 【核心】从本地缓存读取记录
