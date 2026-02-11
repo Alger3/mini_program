@@ -14,7 +14,7 @@
 
       <view class="info-card">
         <view class="card-title bill">消费记录</view>
-        <view class="card-content">精细化管理每一笔支出，半透明卡片设计，让你的财务账单清晰又美观。</view>
+        <view class="card-content">精细化管理每一笔支出，半透明卡片设计，让你的财务账单清晰又美观。（长按可以删除）</view>
       </view>
 
       <view class="info-card">

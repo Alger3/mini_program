@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/menu/menu",
     "pages/bill/bill",
-    "pages/instruction/instruction"
+    "pages/instruction/instruction",
+    "pages/sports/sports"
   ],
   "window": {
     "navigationBarTitleText": "生活管家"

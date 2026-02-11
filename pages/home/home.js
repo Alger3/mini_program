@@ -6,7 +6,7 @@ Page({
     wx.navigateTo({ url: '/pages/bill/bill'});
   },
   goToSports() {
-    wx.showToast({ title: '记录功能开发中...', icon: 'none' });
+    wx.navigateTo({ url: '/pages/sports/sports'});
   },
   goToDiet() {
     wx.showToast({ title: '记录功能开发中...', icon: 'none' });

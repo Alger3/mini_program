@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="fixed-bg" style="background-image: url('https://youke.xn--y7xa690gmna.cn/s1/2026/02/09/6989d4aa1ebd2.webp');"></view>
+
+  <view class="custom-nav" style="height: {{navHeight}}px; padding-top: {{navTop}}px;">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">〈</text>
+    </view>
+  </view>
+
+  <scroll-view scroll-y="true" class="scroll-area">
+    <view class="nav-spacer" style="height: {{navHeight}}px;"></view>
+    
+    <view class="header">🏃‍♂️ 运动打卡</view>
+
+    <view class="section-title">快速记录 (左右滑动)</view>
+
+    <scroll-view class="sports-scroll-view" scroll-x="true" enable-flex="true">
+      <view class="sport-item" wx:for="{{sportTypes}}" wx:key="name" bindtap="onAddSport" data-type="{{item.name}}">
+        <text class="sport-icon">{{item.icon}}</text>
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <view class="section-title">历史记录</view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{history}}" wx:key="index">
+        <view class="item-left">
+          <text class="item-type">{{item.type}}</text>
+          <text class="item-date">{{item.timeRange}} ({{item.date}})</text>
+        </view>
+        <view class="item-right">
+          <text class="item-duration"> {{item.durationText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <view class="modal-mask" wx:if="{{showModal}}" bindtap="hideModal">
+    <view class="modal-content" catchtap="doNothing">
+    <view class="modal-title">记录 {{currentType === '其他' ? '运动' : currentType}}</view>
+    
+    <view class="input-section" wx:if="{{currentType === '其他'}}">
+      <input class="type-input" placeholder="请输入运动名称" bindinput="onTypeNameInput" value="{{customTypeName}}" focus="{{currentType === '其他'}}"/>
+    </view>
+
+    <view class="picker-row">
+      <picker mode="time" value="{{startTime}}" bindchange="bindStartTimeChange">
+        <view class="time-box">开始: {{startTime}}</view>
+      </picker>
+      <text class="to-text">至</text>
+      <picker mode="time" value="{{endTime}}" bindchange="bindEndTimeChange">
+        <view class="time-box">结束: {{endTime}}</view>
+      </picker>
+    </view>
+    <view class="modal-btns">
+      <button class="btn-cancel" bindtap="hideModal">取消</button>
+      <button class="btn-confirm" bindtap="submitRecord">确定</button>
+    </view>
+  </view>
+  </view>
+</view>

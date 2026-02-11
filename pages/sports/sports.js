@@ -1,0 +1,117 @@
+Page({
+  data: {
+    navHeight: 0,
+    navTop: 0,
+    showModal: false,
+    currentType: '',
+    customTypeName: '',
+    startTime: '18:00',
+    endTime: '19:00',
+    sportTypes: [
+      { name: '跑步', icon: '🏃' },
+      { name: '健身', icon: '🏋️' },
+      { name: '骑行', icon: '🚴' },
+      { name: '游泳', icon: '🏊' },
+      { name: '步行', icon: '🚶' },
+      { name: '瑜伽', icon: '🧘' },
+      { name: '篮球', icon: '🏀' },
+      { name: '足球', icon: '⚽' },
+      { name: '其他', icon: '✍' }
+    ],
+    history: [
+    ]
+  },
+
+  onLoad() {
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    this.setData({
+      navTop: menuButtonInfo.top,
+      navHeight: menuButtonInfo.height
+    });
+  },
+
+  goBack() {
+    wx.navigateBack({ delta: 1 });
+  },
+
+  // 触发弹窗
+  onAddSport(e) {
+    this.setData({
+      currentType: e.currentTarget.dataset.type,
+      customTypeName: '', // 每次打开弹窗清空上一次输入
+      showModal: true
+    });
+  },
+  onTypeNameInput(e) {
+    this.setData({ customTypeName: e.detail.value });
+  },
+
+  hideModal() {
+    this.setData({ showModal: false });
+  },
+
+  bindStartTimeChange(e) {
+    this.setData({ startTime: e.detail.value });
+  },
+
+  bindEndTimeChange(e) {
+    this.setData({ endTime: e.detail.value });
+  },
+
+  // 核心逻辑：计算并提交
+  submitRecord() {
+    const { startTime, endTime, currentType, customTypeName, history } = this.data;
+
+    // --- A. 确定最终显示的运动名称 ---
+    let finalType = currentType;
+    if (currentType === '其他') {
+      if (!customTypeName.trim()) {
+        wx.showToast({ title: '请输入运动内容', icon: 'none' });
+        return;
+      }
+      finalType = customTypeName; // 将“其他”替换为用户输入的内容
+    }
+
+    // --- B. 计算时间差 ---
+    const startArr = startTime.split(':').map(Number);
+    const endArr = endTime.split(':').map(Number);
+    let diffMinutes = (endArr[0] * 60 + endArr[1]) - (startArr[0] * 60 + startArr[1]);
+
+    if (diffMinutes <= 0) {
+      wx.showToast({ title: '结束时间需晚于开始', icon: 'none' });
+      return;
+    }
+
+    // --- C. 格式化时长 (满1小时换算) ---
+    let durationText = '';
+    const h = Math.floor(diffMinutes / 60);
+    const m = diffMinutes % 60;
+    durationText = h > 0 ? `${h}小时${m > 0 ? m + '分钟' : ''}` : `${m}分钟`;
+
+    // --- D. 自动获取年份和日期 ---
+    const now = new Date();
+    const autoDate = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+
+    // --- E. 存入历史记录 ---
+    const newRecord = {
+      type: finalType, 
+      timeRange: `${startTime}-${endTime}`,
+      date: autoDate, 
+      durationText: durationText
+    };
+
+    this.setData({
+      history: [newRecord, ...history],
+      showModal: false
+    });
+
+    wx.showToast({ title: '记录成功', icon: 'success' });
+  },
+  doNothing() {
+    // 仅仅为了阻断冒泡，不需要写任何逻辑
+  },
+
+  hideModal() {
+    this.setData({ showModal: false });
+  }
+})
